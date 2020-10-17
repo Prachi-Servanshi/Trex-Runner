@@ -64,6 +64,9 @@ function setup() {
   
   cloudsGroup = new Group();
   obstaclesGroup = new Group();
+
+  trex.setCollider('rectangle',0,0,trex.width*2.5,trex.height);
+  //trex.debug = true;
   
   score = 0;
 }
@@ -79,6 +82,7 @@ function draw() {
   
     if(keyDown("space") && trex.y >= 159) {
       trex.velocityY = -12;
+
     }
   
     trex.velocityY = trex.velocityY + 0.8
@@ -92,7 +96,8 @@ function draw() {
     spawnObstacles();
   
     if(obstaclesGroup.isTouching(trex)){
-        gameState = END;
+        //gameState = END;
+        trex.velocityY = -10; //Artificially Intelligent Terex
     }
   }
   else if (gameState === END) {
